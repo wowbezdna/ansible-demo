@@ -13,6 +13,7 @@
           - curl
           - gnupg
           - lsb-release
+          - python3-pip
         update-cache: true
         cache_valid_time: 86400
 
@@ -59,6 +60,13 @@
         mode: 0755
   become: true
 
+- name: Настройка дополнительных пакетов python
+  block:
+    - name: Установка pip пакетов
+      pip:
+        name: docker
+
+
 - name: Завершение установки
   block:
     - name: Добавление пользователя в группу Docker
@@ -68,6 +76,6 @@
           - docker
         append: true
 
-    - name: Перезагрузка
-      reboot:
-  become: true
+  #   - name: Перезагрузка
+  #     reboot:
+  # become: true
