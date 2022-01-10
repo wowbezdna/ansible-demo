@@ -72,8 +72,7 @@
     - name: Добавление пользователя в группу Docker
       user:
         name: "{{ ansible_user }}"
-        groups:
-          - docker
+        groups: docker
         append: true
 
   #   - name: Перезагрузка
